@@ -8,26 +8,27 @@
 <form [formGroup]="inputTemps" (ngSubmit)="submitForm()" class="form-horizontal" data-fv framework="bootstrap" data-fv-icon-valid="glyphicon glyphicon-ok"
   data-fv-icon-invalid="glyphicon glyphicon-remove" data-fv-icon-validating="glyphicon glyphicon-refresh" style="padding-left:10em">
 
-   Temperature Record:<br/>
-  
+  <div class="form group">
+    <label class="col-sm-2 control label"> Temperature Record:</label>
+  </div>
 
   <div class="col-sm-offset-0.5 col-sm-4  ">
     <!-- onkeydown property ensures "e"  is not active ; overriding what the number class allows -->
     <!-- Bootstrap decoration allows only numbers to be enetered. -->
-    <input formControlName="record"  type="number" onkeydown="javascript: return event.keyCode==69? false: true"
+    <input formControlName="record" class="form-control" type="number" onkeydown="javascript: return event.keyCode==69? false: true"
       placeholder="Enter temperature" required>
-    <!-- <span style="color: red" [hidden]="inputTemps.controls.record.invalid && this.svc.TempRecords.length < 8 || inputTemps.controls.record.touched ">Please enter temperature</span> -->
     <span style="color: red" *ngIf="!this.inputTemps.get('record').valid && this.inputTemps.get('record').touched && this.svc.TempRecords.length < 8">Please enter temperature</span>
-    <br/><br/>
-    <button [disabled]="inputTemps.invalid" type="submit">Add</button>
-    
-    <input  [disabled]="!this.svc.TempRecords.length" class="btn btn-outline-secondary" ng-bind="ngbPopover" ngbPopover={{center}} type="button"
-      placement="right" popoverTitle="Median Temperature:" value='Get Median' triggers="mouseenter:mouseleave" />
+    <br>
+    <input name="sub" type=button value=Add [disabled]="isValid || !this.inputTemps.get('record').valid" (click)=onSubmit()/>
+    <span class="tab"></span>
+    <input name="show" [disabled]="!this.svc.TempRecords.length" class="btn btn-outline-secondary" ng-bind="ngbPopover" ngbPopover={{center}}
+      type="button" placement="right" popoverTitle="Median Temperature:" value='Get Median' triggers="mouseenter:mouseleave"
+    />
     <br>
   </div>
 
   <p></p>
-  <div class="col-lg-4" >
+  <div class="col-lg-4">
 
     <ngb-progressbar animated="true" value="{{dynamic}}" [striped]="true" type={{success}} style="width:100%">
       <b>

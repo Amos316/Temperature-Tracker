@@ -28,19 +28,27 @@ export class RecordsComponent implements OnInit {
     config.animated = true;
     config.type = 'success';
   }
+
+  inputTemps: FormGroup;
+  createForm() {
+    this.inputTemps = this.formBuilder.group({
+      record: ['', Validators.required],
+    })
+  }
+  submitForm() {
+    let data = {
+      record: this.inputTemps.value.record
+    }
+
+  }
   ngOnInit() {
     this.inputTemps = new FormGroup({
       record: new FormControl('', [Validators.required]),
     })
-}
-  submitForm() {
-    let data = {
-      record : this.inputTemps.value.record,
-     // center: getMedian(this.svc.TempRecords) + '\u00B0' + 'F',
-     // dynamic : ((arrlength + 1) / maxArrLength) * 100
-    }
-  
-  var tempInput = this.inputTemps.get('record').value;
+
+  }
+  onSubmit() {
+    var tempInput = this.inputTemps.get('record').value;
     var arrlength = this.svc.TempRecords.length;
     var maxArrLength: number = 8;
 
@@ -91,17 +99,10 @@ export class RecordsComponent implements OnInit {
       let isEven = numbers.length % 2 === 0;
       return isEven ? (numbers[middle] + numbers[middle - 1]) / 2 : numbers[middle];
     }
-    
     console.log(this.svc.TempRecords)
     console.log(getMedian(this.svc.TempRecords))
   }
 
-  inputTemps: FormGroup;
-  createForm() {
-    this.inputTemps = this.formBuilder.group({
-      record: [{value:'', disabled: true}, Validators.required],
-    })
-  }
 
 }
 
