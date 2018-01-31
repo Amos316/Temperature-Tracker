@@ -1,0 +1,29 @@
+<div class="container">
+  <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+    <a class="navbar-brand" href="/" (click)="navbarCollapsed = true"> <i class="fa fa-thermometer-full" aria-hidden="true"></i> Temperature monitor</a>
+    <button class="navbar-toggler navbar-toggler-right"
+            type="button"
+            (click)="toggleNavbar()"
+            [attr.aria-expanded]="!navbarCollapsed"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+      <ul class="navbar-nav  mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/guide" routerLinkActive="active" (click)="collapseNavbar()">Guide</a>
+        </li>
+            <!-- added route link for records  -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/records" routerLinkActive="active" (click)="collapseNavbar()">Records</a>
+        </li> 
+      </ul>
+    </div>
+    <span class="header__candidate d-none d-lg-inline">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i> Candidate name: <br>
+        <span class="header__candidate__name">{{candidateName}}</span>
+    </span>
+  </header>
+</div>

@@ -1,0 +1,15 @@
+@import '../../../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../../scss/variables';
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-light {
+  .navbar-nav {
+    .nav-link {
+      &.active {
+        color: $link-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,209 @@
+<app-jumbotron title="Coding exercise guide"></app-jumbotron>
+<div class="container main">
+  <p>Please read the following guide carefully before starting solving the coding exercise.</p>
+  <ngb-tabset [activeId]="currentTab" #tabs="ngbTabset" (tabChange)="goToURL($event)">
+    <ngb-tab id="guidelines" title="Guidelines">
+      <ng-template ngbTabContent>
+        <p>We want you to demonstrate your ability to write code following the
+          <a href="https://angular.io/guide/styleguide"
+            target="_blank">Angular style guide</a> which is well
+          <a href="https://en.wikipedia.org/wiki/Code_coverage" target="_blank">covered</a> by unit tests using
+          <a href="https://jasmine.github.io/" target="_blank">Jasmine</a>. In other words, as much as the correctness of the solution (e.g. providing validation), we are looking
+          for proper usage of Angular concepts or whatever you deem pertinent to make your code easy to read and to maintain.</p>
+        <p>
+          <a href="https://v4-alpha.getbootstrap.com/" target="_blank">Bootstrap</a> is present along with the
+          <a href="https://ng-bootstrap.github.io/#/home" target="_blank">ng-boostrap</a> components library, use them whenever there's a need to style your components. Additionally there
+          are some example components to help you get started.</p>
+        <p>This exercise can be done in a few hours, but please don’t rush and take the time you need. Just remember that we
+          are looking for quality of code over quantity. Refactor and clean your code.</p>
+        <p>If you have any questions, or you encounter any issues, please send us an
+          <a href="mailto:AppsDevInterviewProcess@teksystems.com">email</a>.</p>
+        <p>Please continue to the
+          <a href="#" (click)="goToTab($event, 'instructions')">Instructions</a> tab.</p>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="instructions" title="Instructions">
+      <ng-template ngbTabContent>
+        <p>Before starting, modify the app component located in the /src/components/app folder so that it displays your name
+          in the navbar instead of the "[your name here]" default placeholder.</p>
+        <p>If you had any issues, please document them in the
+          <a href="#" (click)="goToTab($event, 'comments')">Comments</a> tab by replacing the text that is present there, see the guide page component located in the /src/components/pages/guide
+          folder.</p>
+        <p>When writing code:</p>
+        <ul>
+          <li>Create as many TypeScript, HTML, and SCSS files as you feel is appropriate.</li>
+          <li>
+            Run the tests with coverage using the "npm run coverage" (see ./package.json for other commands).
+            <br> A coverage report is created in the /coverage folder after all the tests are run. You can open the index.html
+            report file in your favourite browser to view the report.
+          </li>
+          <li>Make sure your code coverage all your written code and it's at least at 80%.</li>
+        </ul>
+        <p>You should not need any external resources to complete the user stories, in the case you really do, please document
+          them in the
+          <a href="#" (click)="goToTab($event, 'thought-process')">Thought Process</a> section.</p>
+        <p>When working on each story at least one git commit must be made. Don't commit all the user stories in one bundle.</p>
+        <p>Once complete push your changes to the repository and notify your recruiter.</p>
+        <p>Please continue to the
+          <a href="#" (click)="goToTab($event, 'user-stories')">User Stories</a> tab to begin.</p>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="user-stories" title="User Stories">
+      <ng-template ngbTabContent>
+        <p>The goal of the exercise is to Build a Temperature monitor application using Angular and Boostrap by completing the
+          following user stories:</p>
+        <h4>User Story #1</h4>
+        <p>As an anonymous end user, I want to be able to navigate to the "Records" page and see the "Add records" form.</p>
+        <h5>Acceptance Criteria & Definition of Done</h5>
+        <ul>
+          <li>A new page component Records should be created in the /src/app/components/pages folder.</li>
+          <li>It should be linked to the navbar component src/app/components/common/navbar using the /records path and in the
+            router located at /src/app.router.ts</li>
+          <li>The new page should include the jumbotron common component featuring the "Temperature records" title.</li>
+          <li>Below the jumbotron should be present a form with:
+            <ul>
+              <li>a label named "Temperature record";</li>
+              <li>a temperature text input field;</li>
+              <li>a submit button named "Add".</li>
+            </ul>
+          </li>
+          <li>Using
+            <a href="https://v4-alpha.getbootstrap.com/components/forms/" target="_blank">Boostrap</a> to style the form is
+            <strong>mandatory</strong>.</li>
+          <li>The form should be responsive.</li>
+          <li>The new page component must be unit tested for the presence of all elements described.</li>
+        </ul>
+        <h4>User Story #2</h4>
+        <p>As an anonymous end user, I want to be able to enter maximum 8 temperature records, by entering a value and then
+          clicking on the "Add" button.</p>
+        <h5>Acceptance Criteria & Definition of Done</h5>
+        <ul>
+          <li>Create a new stateless service named "TemperatureMonitor" that adds records in an array.</li>
+          <li>When entering a record in the form and clicking the "Add" button the service is called to store the records.</li>
+          <li>The component should not allow more than 8 values to be added in the store.</li>
+          <li>Once the stored maximum values are reached the "Add" button should be disabled.</li>
+          <li>Add new unit tests to the page component spec file to cover the new functionality.</li>
+          <li>A unit test file should also be created for the new service to cover its functionality.</li>
+        </ul>
+        <h4>User Story #3</h4>
+        <p>As an anonymous end user, I want to see the progress of added records.</p>
+        <h5>Acceptance Criteria & Definition of Done</h5>
+        <ul>
+          <li>Add a new
+            <a href="https://ng-bootstrap.github.io/#/components/progressbar/examples">ng-bootstrap progress bar</a> component on the page below the add button with a label of your choice above.</li>
+          <li>The progress bar should reflect the number of records added / maximum records (e.g. 2/8) and should be filled accordingly.</li>
+          <li>The color of the progress bar should be green, when 8 maximum records are hit it should become red.</li>
+          <li>Add new unit tests to the page component spec file to cover the new functionality.</li>
+        </ul>
+        <h4>User Story #4</h4>
+        <p>As an anonymous end user, I want to be prevented from entering and invalid value such as strings in the "Temperature"
+          input field.</p>
+        <h5>Acceptance Criteria & Definition of Done</h5>
+        <ul>
+          <li>The component should allow the service to be called only with numeric values.</li>
+          <li>Using
+            <a href="https://v4-alpha.getbootstrap.com/components/forms/#validation">Bootstrap</a> and
+            <a href="https://angular.io/guide/form-validation">Angular</a> form validation the user should be informed when an error has occurred.</li>
+          <li>Here are some of the possible invalid actions:
+            <ul>
+              <li>The user tried to add a string instead of a number;</li>
+              <li>The user tried to add an empty value.</li>
+            </ul>
+          </li>
+          <li>Add new unit tests to the page component spec file to cover the new functionality.</li>
+        </ul>
+        <h4>User Story #5</h4>
+        <p>As an anonymous end user, I want to be able to see the median of the entered temperature records that I have entered.</p>
+        <h5>Acceptance Criteria and Definition of Done</h5>
+        <ul>
+          <li>Create a new button named "Get Median" next to the "Add" button.</li>
+          <li>Using a
+            <a href="https://ng-bootstrap.github.io/#/components/popover/examples">ng-bootstrap popover</a> display the current
+            <a href="http://en.wikipedia.org/wiki/Median" target="_blank">median</a> value for the entered records when hovering the button.</li>
+          <li>The "TemperatureMonitor" service should be responsible for calculating the median.</li>
+          <li>The "Get Median" button should be disabled if no records are present in the store.</li>
+          <li>Add new unit tests to the page component spec file to cover the new functionality.</li>
+        </ul>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="comments" title="Comments">
+      <ng-template ngbTabContent>
+        <p>
+          <b>Story 1:</b>
+          <br>To start, changed directory in Angular CLI to [src/app/components/pages folder] and generated a component named,
+          'records', using (ng g c records).
+          <br> Edited the HTML page(records.component.html) to display heading 'Temperature records'.
+          <br> Added heading tag(h4 tags) to also display 'add records' below the page title.
+          <br> Updated the links on navigation bar to reflect the records component and also in the [app.routing.ts]
+          <br> Used reference from w3.schools to create a form using bootstrap. Defaulted to w3 schools as it's familiar.
+          <br> The input field with type listed as number was still accepting 'e' as valid input. Per research the number class
+          allows for shortcut in writing long numbers using 'e'. For example, 200 can be written as 2e2 which is essentially
+          2*10^2. This will be benefical if an application requires big numbers. I decided to disable the feature so no string
+          can be created with this code[type="number" onkeydown="javascript: return event.keyCode==69? false: true"]
+          <br>
+          <br>
+          <b>Story 2:</b>
+          <br>Created a service with Angular CLI(ng g service TemperatureMonitor). Placed the service in the app folder and exported
+          class to make it available for the components.
+          <br>Created an array called TempsRecords and declared type as number, since data to be received should be an integer.
+          <br> Used service to grab input and to push data to array.
+          <br>Set 'Add' button to disable after array length is 8. Also set the input field to be required field. Without data
+          the 'add' button is diable to prevent empty data from being submitted.
+          <br>
+          <br>
+          <b>Story 3:</b>Added a progress bar from [ng-bootstrap progress bar page]. Set striped and animated to true to give
+          it some elegance rather than the stationary blocked color.
+          <br> Used interpolation to dyamically changed the progress bar length and color, pulling values as the onsubmit function
+          is called and data being pushed to array.
+          <br> with Array length starting at zero, it was hard to show the progress bar with a zero value. changed formular to
+          add plus 1 to array length and leave numerical length at 8 for mathetical logic. Got stuck on how to have progress
+          bar changed dynamically without hard coding incase end-user switches array length.
+          <br>
+          <br>
+          <b>Story 4:</b>
+          Data validation was handled in story 2. Set input field not to accept or enable string hence user cannot type any alphabet.
+          This will save user time and frustration of having to have option to type alphabets and later be told its invalid.
+          Additional layer added to form group with validators to ensure service is only called with numeric value and not
+          string or empty field.
+          <br> Created a span which lets user know to enter temperature if input box is touched but no data entered.
+          <br>
+          <br>
+          <b>Story 5:</b> Added button to the form and called it "Get Median". Did research on the math logic on how to get
+          the median. Created the formular and relied on service for array in real time. Get Median is disable when service
+          has an array with no length/empty array.
+          <br> Used interpolation to dynamically populate Median figure in the Popover field. </p>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="resources" title="Resources">
+      <ng-template ngbTabContent>
+        <p>Please use these links as reference:</p>
+        <ul>
+          <li>
+            <a href="https://angular.io/" target="_blank">Angular</a>
+          </li>
+          <li>
+            <a href="https://jasmine.github.io/" target="_blank">Jasmine</a>
+          </li>
+          <li>
+            <a href="https://v4-alpha.getbootstrap.com/" target="_blank">Bootstrap</a>
+          </li>
+          <li>
+            <a href="https://ng-bootstrap.github.io/#/home" target="_blank">ng-bootstrap</a>
+          </li>
+          <li>
+            <a href="https://lodash.com/docs/4.17.4" target="_blank">lodash</a>
+          </li>
+          <li>
+            <a href="http://en.wikipedia.org/wiki/Median" target="_blank">Median</a>
+          </li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Code_coverage" target="_blank">Code coverage</a>
+          </li>
+          <li>
+            <a href="mailto:AppsDevInterviewProcess@teksystems.com" target="_blank">Apps Dev Support Email</a>
+          </li>
+        </ul>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

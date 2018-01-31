@@ -1,0 +1,50 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import './variables.scss';
+
+a {
+  color: $link-color;
+  &:hover {
+    color: $link-color;
+  }
+}
+
+.header {
+  &__candidate {
+    white-space: nowrap;
+    text-align: right;
+    &__name {
+      color: $link-color;
+    }
+  }
+}
+
+.container {
+  &.main {
+    margin-bottom: $spacer;
+  }
+}
+
+.jumbotron {
+  color: $white;
+  border-radius: 0;
+  background: $brand-color;
+  padding: $jumbotron-padding;
+}
+
+.nav-tabs {
+  .nav-link {
+    &.active {
+      background: $gray-100;
+      border-bottom-color: $gray-100;
+    }
+  }
+}
+
+.tab-content {
+  padding: $spacer $navbar-padding-x $navbar-padding-y $navbar-padding-x;
+  border: 1px solid $nav-tabs-border-color;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  border-top: none;
+  background: $gray-100;
+}
