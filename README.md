@@ -1,4 +1,4 @@
-# Angular Coding Exercise
+# Angular Coding Exercise // Temperature-Tracker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
@@ -24,4 +24,4 @@ Run `npm run coverage` to execute the unit tests via [Karma](https://karma-runne
 
 ## Further help
 
-If you have any questions or issues please send us an email at [AppsDevInterviewProcess@teksystems.com](mailto:AppsDevInterviewProcess@teksystems.com).
+
